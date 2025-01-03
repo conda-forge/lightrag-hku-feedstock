@@ -1,5 +1,5 @@
 {% set name = "lightrag-hku" %}
-{% set version = "1.0.8" %}
+{% set version = "1.0.9" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/lightrag_hku-{{ version }}.tar.gz
-  sha256: cfc8c023db192e0204b80f82bd0c0cf99d670fbfaaeba7e7d27b20c1d85cf3b7
+  sha256: b3d05e64909943b9f5d1b55d1eee77391f61f5702e55c2ec5ce415adb004f16f
   patches:
     - requirements.patch
 
