@@ -1,0 +1,62 @@
+schema_version: 1
+
+context:
+  name: lightrag-hku
+  version: "1.0.8"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/lightrag_hku-${{ version }}.tar.gz
+  sha256: cfc8c023db192e0204b80f82bd0c0cf99d670fbfaaeba7e7d27b20c1d85cf3b7
+  patches:
+    - requirements.patch
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - aioboto3
+    - ollama
+    - pyvis
+    - python >=${{ python_min }}
+    - accelerate
+    - ollama-python
+    - openai
+    - tiktoken
+    - networkx
+    - graspologic
+    - nano-vectordb
+    - hnswlib
+    - python-xxhash
+    - pytorch
+    - tenacity
+    - transformers
+    - neo4j-python-driver
+    - oracledb
+
+tests:
+  - python:
+      imports:
+        - lightrag
+      pip_check: true
+
+      python_version: ${{ python_min }}.*
+about:
+  summary: "LightRAG: Simple and Fast Retrieval-Augmented Generation"
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/HKUDS/LightRAG
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
