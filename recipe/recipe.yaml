@@ -21,14 +21,14 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python ${{ python_min }}.*
     - pip
     - setuptools
   run:
     - aioboto3
     - ollama
     - pyvis
-    - python >=3.9
+    - python >=${{ python_min }}
     - accelerate
     - ollama-python
     - openai
