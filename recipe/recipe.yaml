@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: lightrag-hku
-  version: "1.0.8"
+  version: 1.5.0
 
 package:
   name: ${{ name|lower }}
@@ -10,12 +10,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/lightrag_hku-${{ version }}.tar.gz
-  sha256: cfc8c023db192e0204b80f82bd0c0cf99d670fbfaaeba7e7d27b20c1d85cf3b7
+  sha256: d5a444eb6f213911ebb1dc641a4fa34b52b008315a4582c4110c0d03a461fd4b
   patches:
     - requirements.patch
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -25,25 +25,26 @@ requirements:
     - pip
     - setuptools
   run:
-    - aioboto3
-    - ollama
-    - pyvis
     - python >=${{ python_min }}
-    - accelerate
-    - ollama-python
-    - openai
     - tiktoken
     - networkx
-    - graspologic
     - nano-vectordb
-    - hnswlib
-    - python-xxhash
-    - pytorch
     - tenacity
-    - transformers
-    - neo4j-python-driver
-    - oracledb
-
+    - pydantic
+    - packaging
+    - pipmaster
+    - numpy >=1.24.0,<3.0.0
+    - xlsxwriter >=3.1.0
+    - configparser
+    - google-api-core >=2.0.0,<3.0.0
+    - pyyaml >=6.0,<7.0
+    - pandas >=2.0.0,<2.4.0
+    - pypinyin
+    - aiohttp
+    - python-dotenv
+    - google-genai >=1.0.0,<3.0.0
+    - setuptools
+    - json-repair
 tests:
   - python:
       imports:
@@ -52,7 +53,7 @@ tests:
 
       python_version: ${{ python_min }}.*
 about:
-  summary: "LightRAG: Simple and Fast Retrieval-Augmented Generation"
+  summary: 'LightRAG: Simple and Fast Retrieval-Augmented Generation'
   license: MIT
   license_file: LICENSE
   homepage: https://github.com/HKUDS/LightRAG
